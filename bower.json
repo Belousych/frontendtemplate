@@ -1,0 +1,26 @@
+{
+	"name": "frontendTemlate",
+	"version": "0.0.4",
+	"authors": [
+    "Belousych"
+  ],
+	"license": "MIT",
+	"ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+	"dependencies": {
+		"jquery": "^2.1.4",
+		"modernizr": "^2.8.3",
+		"normalize-css": "*",
+		"uikit": "^2.22.0"
+	},
+	"description": "frontend",
+	"main": "",
+	"moduleType": [],
+	"homepage": "",
+	"private": false
+}
