@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp'),
+	plumber = require('gulp-plumber'),
 	watch = require('gulp-watch'),
 	prefixer = require('gulp-autoprefixer'),
 	uglify = require('gulp-uglify'),
@@ -76,6 +77,7 @@ gulp.task('js:build', function () {
 
 gulp.task('style:build', function () {
 	gulp.src(path.src.style) //Выберем наш main.less
+		.pipe(plumber())
 		.pipe(sourcemaps.init()) //То же самое что и с js
 		.pipe(less()) //Скомпилируем
 		.pipe(prefixer({
