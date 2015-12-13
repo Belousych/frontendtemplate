@@ -2,6 +2,7 @@
 
 var gulp = require('gulp'),
 	plumber = require('gulp-plumber'),
+	notify = require('gulp-notify'),
 	watch = require('gulp-watch'),
 	prefixer = require('gulp-autoprefixer'),
 	uglify = require('gulp-uglify'),
@@ -15,6 +16,16 @@ var gulp = require('gulp'),
 	browserSync = require("browser-sync"),
 	reload = browserSync.reload;
 
+var onError = function (err) {
+	notify.onError({
+		title: "Gulp",
+		subtitle: "Failure!",
+		message: "Error: <%= error.message %>",
+		sound: "Beep"
+	})(err);
+
+	this.emit('end');
+};
 
 var path = {
 	build: { //Тут мы укажем куда складывать готовые после сборки файлы
@@ -64,6 +75,9 @@ gulp.task('html:build', function () {
 
 gulp.task('js:build', function () {
 	gulp.src(path.src.js) //Найдем наш main файл
+		.pipe(plumber({
+			errorHandler: onError
+		}))
 		.pipe(rigger()) //Прогоним через rigger
 		.pipe(sourcemaps.init()) //Инициализируем sourcemap
 		.pipe(uglify()) //Сожмем наш js
@@ -77,7 +91,9 @@ gulp.task('js:build', function () {
 
 gulp.task('style:build', function () {
 	gulp.src(path.src.style) //Выберем наш main.less
-		.pipe(plumber())
+		.pipe(plumber({
+			errorHandler: onError
+		}))
 		.pipe(sourcemaps.init()) //То же самое что и с js
 		.pipe(less()) //Скомпилируем
 		.pipe(prefixer({
@@ -88,7 +104,8 @@ gulp.task('style:build', function () {
 		.pipe(gulp.dest(path.build.css)) //И в build
 		.pipe(reload({
 			stream: true
-		}));
+		})).pipe(notify("Стили впорядке"));
+
 });
 
 gulp.task('image:build', function () {
@@ -139,11 +156,11 @@ gulp.task('watch', function () {
 });
 
 gulp.task('webserver', function () {
-    browserSync(config);
+	browserSync(config);
 });
 
 gulp.task('clean', function (cb) {
-    rimraf(path.clean, cb);
+	rimraf(path.clean, cb);
 });
 
 gulp.task('default', ['build', 'webserver', 'watch']);
