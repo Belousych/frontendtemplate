@@ -14,6 +14,7 @@ var gulp = require('gulp'),
 	pngquant = require('imagemin-pngquant'),
 	rimraf = require('rimraf'),
 	browserSync = require("browser-sync"),
+//	spritesmith = require('gulp.spritesmith'),
 	reload = browserSync.reload;
 
 var onError = function (err) {
@@ -40,6 +41,8 @@ var path = {
 		js: 'src/js/main.js', //В стилях и скриптах нам понадобятся только main файлы
 		style: 'src/style/main.less',
 		img: 'src/img/**/*.*', //Синтаксис img/**/*.* означает - взять все файлы всех расширений из папки и из вложенных каталогов
+//		spriteImg: 'src/img/sprite/**/*.*',
+//		spriteStyle: 'src/style/partials/',
 		fonts: 'src/fonts/**/*.*'
 	},
 	watch: { //Тут мы укажем, за изменением каких файлов мы хотим наблюдать
@@ -109,7 +112,22 @@ gulp.task('style:build', function () {
 });
 
 gulp.task('image:build', function () {
-	gulp.src(path.src.img) //Выберем наши картинки
+//	 var spriteData = 
+//        gulp.src(path.src.spriteImg) // путь, откуда берем картинки для спрайта
+//            .pipe(spritesmith({
+//                imgName: 'sprite.png',
+//                cssName: 'sprite.less',
+//                cssFormat: 'less',
+//                algorithm: 'binary-tree',
+//                cssVarMap: function(sprite) {
+//                    sprite.name = 's-' + sprite.name
+//                }
+//            }));
+//
+//    spriteData.img.pipe(gulp.dest(path.build.img)); // путь, куда сохраняем картинку
+//    spriteData.css.pipe(gulp.dest(path.src.spriteStyle)); // путь, куда сохраняем стили
+	
+	gulp.src([path.src.img]) //Выберем наши картинки
 		.pipe(imagemin({ //Сожмем их
 			progressive: true,
 			svgoPlugins: [{
@@ -123,6 +141,8 @@ gulp.task('image:build', function () {
 			stream: true
 		}));
 });
+
+
 
 gulp.task('fonts:build', function () {
 	gulp.src(path.src.fonts)
