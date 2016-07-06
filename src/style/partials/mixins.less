@@ -1,0 +1,119 @@
+// МИКСИНЫ И ПЕРЕМЕННЫЕ ДЛЯ САЙТА
+//Примешивание кроссбраузерный inline-block
+.inblock (@val:top) {
+	display: -moz-inline-stack;
+ 	display: inline-block;
+	vertical-align: @val;
+	zoom: 1;
+	*display: inline;
+}
+// Примешивание для очистки float-ов
+.clearfix  {
+	*zoom: 1;
+	&:after {content: "";  display: table;    clear: both; }
+}
+
+// Новый контекст (http://css-live.ru/tricks/novaya-alternativa-clearfix-u-i-overflowhidden.html) альтернатива overflow
+.new-context {
+    display: table;
+    &:after {
+    	/*content: '1 1';*/  /*Op15+*/
+    	content: '1 1 1 1 1 1 1 1 1 1 1'; /*Op12+*/
+	font: .1px/0 a;
+	display: block;
+	word-spacing: 99in;
+    	overflow: hidden; /*IE8-*/
+    }
+}
+
+// Примешивание из CSS3
+// Анимация при наведении
+.animated-css3 (@prop, @seconds: 0.4s) {
+  -webkit-transition: @prop @seconds ease;
+  -o-transition: @prop @seconds ease;
+  -ms-transition: @prop @seconds ease;
+  -moz-transition: @prop @seconds ease;
+  transition: @prop @seconds ease;
+}
+//Отмена анимации
+.animated-css3-none {
+	-webkit-transition: none!important;
+	-o-transition: none!important;
+	-ms-transition: none!important;
+	-moz-transition: none!important;
+	transition: none!important;
+}
+
+// Уголки скруглены
+.rounded (@radius: 5px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
+	position: relative;
+	behavior: url('public/css/PIE.htc');
+}
+
+// градиент - классный скрипток с поддержкой ie
+.linear-gradient( @dir: top, @start-color: #c30000, @end-color: #b20000 ) {
+	background: -webkit-linear-gradient(@dir, @start-color 0%, @end-color 100%);
+	background: -moz-linear-gradient(@dir, @start-color 0%, @end-color 100%);
+	background: -ms-linear-gradient(@dir, @start-color 0%, @end-color 100%);
+	background: -o-linear-gradient(@dir, @start-color 0%, @end-color 100%);
+	background: linear-gradient(@dir, @start-color 0%, @end-color 100%);
+	position: relative;
+  behavior: url('public/css/PIE.htc');
+  -pie-background: url(bg-image.png) no-repeat, linear-gradient(@start-color, @end-color);
+
+}
+
+
+
+
+.list-reset{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+//GRID
+.grid {
+    .row(12);
+    .col-1 {.column(1);}
+    .col-2 {.column(2);}
+    .col-3 {.column(3);}
+    .col-4 {.column(4);}
+    .col-5 {.column(5);}
+    .col-6 {.column(6);}
+    .col-7 {.column(7);}
+    .col-8 {.column(8);}
+    .col-9 {.column(9);}
+    .col-10 {.column(10);}
+    .col-11 {.column(11);}
+    .col-12 {.column(12);}
+
+    .push-1 {.push(1)}
+    .push-2 {.push(2)}
+    .push-3 {.push(3)}
+    .push-4 {.push(4)}
+    .push-5 {.push(5)}
+    .push-6 {.push(6)}
+    .push-7 {.push(7)}
+    .push-8 {.push(8)}
+    .push-9 {.push(9)}
+    .push-10 {.push(10)}
+    .push-11 {.push(11)}
+    .push-12 {.push(12)}
+
+    .pull-1 {.pull(1)}
+    .pull-2 {.pull(2)}
+    .pull-3 {.pull(3)}
+    .pull-4 {.pull(4)}
+    .pull-5 {.pull(5)}
+    .pull-6-12{.pull(6)}
+    .pull-7-12{.pull(7)}
+    .pull-8-12{.pull(8)}
+    .pull-9-12{.pull(9)}
+    .pull-10-12{.pull(10)}
+    .pull-11-12{.pull(11)}
+    .pull-12-12{.pull(12)}
+}
