@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp'),
+	pug = require('gulp-pug'),
 	plumber = require('gulp-plumber'),
 	notify = require('gulp-notify'),
 	watch = require('gulp-watch'),
@@ -38,6 +39,7 @@ var path = {
 	},
 	src: { //Пути откуда брать исходники
 		html: 'src/*.html', //Синтаксис src/*.html говорит gulp что мы хотим взять все файлы с расширением .html
+		pug: 'src/*.pug',
 		js: 'src/js/main.js', //В стилях и скриптах нам понадобятся только main файлы
 		style: 'src/style/main.less',
 		img: 'src/img/**/*.*',
@@ -47,6 +49,7 @@ var path = {
 	},
 	watch: { //Тут мы укажем, за изменением каких файлов мы хотим наблюдать
 		html: 'src/**/*.html',
+		pug: 'src/**/*.pug',
 		js: 'src/js/**/*.js',
 		style: 'src/style/**/*.less',
 		img: 'src/img/**/*.*',
@@ -60,22 +63,29 @@ var config = {
 	server: {
 		baseDir: "./build"
 	},
-	tunnel: true,
+	// tunnel: true,
 	host: 'localhost',
 	port: 9000,
 	logPrefix: "Frontend"
 };
 
 
+// gulp.task('html:build', function () {
+// 	gulp.src(path.src.html) //Выберем файлы по нужному пути
+// 		.pipe(rigger()) //Прогоним через rigger
+// 		.pipe(gulp.dest(path.build.html)) //Выплюнем их в папку build
+// 		.pipe(reload({
+// 			stream: true
+// 		})); //И перезагрузим наш сервер для обновлений
+// });
 gulp.task('html:build', function () {
-	gulp.src(path.src.html) //Выберем файлы по нужному пути
-		.pipe(rigger()) //Прогоним через rigger
+	gulp.src(path.src.pug) //Выберем файлы по нужному пути
+		.pipe(pug()) //Прогоним через rigger
 		.pipe(gulp.dest(path.build.html)) //Выплюнем их в папку build
 		.pipe(reload({
 			stream: true
 		})); //И перезагрузим наш сервер для обновлений
 });
-
 gulp.task('js:build', function () {
 	gulp.src(path.src.js) //Найдем наш main файл
 		.pipe(plumber({
@@ -153,9 +163,9 @@ gulp.task('fonts:build', function () {
 gulp.task('build', [
     'html:build',
     'js:build',
-    'style:build',
     'fonts:build',
-    'image:build'
+    'image:build',
+	'style:build'
 ]);
 
 gulp.task('watch', function () {
