@@ -39,7 +39,7 @@ var path = {
 	},
 	src: { //Пути откуда брать исходники
 		html: 'src/*.html', //Синтаксис src/*.html говорит gulp что мы хотим взять все файлы с расширением .html
-		pug: 'src/*.pug',
+		pug: 'src/views/pages/*.pug',
 		js: 'src/js/main.js', //В стилях и скриптах нам понадобятся только main файлы
 		style: 'src/style/main.less',
 		img: 'src/img/**/*.*',
@@ -48,7 +48,7 @@ var path = {
 		fonts: 'src/fonts/**/*.*'
 	},
 	watch: { //Тут мы укажем, за изменением каких файлов мы хотим наблюдать
-		html: 'src/**/*.html',
+		// html: 'src/**/*.html',
 		pug: 'src/**/*.pug',
 		js: 'src/js/**/*.js',
 		style: 'src/style/**/*.less',
@@ -169,7 +169,7 @@ gulp.task('build', [
 ]);
 
 gulp.task('watch', function () {
-	watch([path.watch.html], function (event, cb) {
+	watch([path.watch.pug], function (event, cb) {
 		gulp.start('html:build');
 	});
 	watch([path.watch.style], function (event, cb) {
