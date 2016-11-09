@@ -1,0 +1,12 @@
+mixin breadcrumbs(h1, ...items)
+    - var separator = ' / ';
+    ul.breadcrumbs
+        li.breadcrumbs__item
+            a(href="/", target="") Главная
+        | #{separator}
+        each item in items
+            li.breadcrumbs__item
+                a(href="", target="")= item
+            | #{separator}
+        li.breadcrumbs__item
+            span= h1

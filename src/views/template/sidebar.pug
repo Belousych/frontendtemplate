@@ -1,0 +1,24 @@
+a(href="#sidebar", data-uk-offcanvas).offcanvas-bar.uk-hidden-large
+    span
+    span
+    span
+#sidebar.sidebar.uk-offcanvas
+    .uk-offcanvas-bar.uk-offcanvas-bar-flip
+        .sidebar__wrapp.uk-flex
+            .sidebar__bar.uk-flex.uk-flex-column.uk-flex-space-between
+                div
+                .sidebar__logo
+                    a(href="/")
+                        img(src="../img/logo_big.png", alt="")
+                nav.sidebar__nav
+                    include ../template/menu.pug
+                    +menu(mainMenu)(class="menu-sidebar")
+                div
+                .sidebar__bottom
+                    a.price-list
+                        i.uk-icon-file-text-o
+                        |  &nbsp;
+                        span Скачать прайс лист
+                    .sidebar__phone
+                        a(href="tel:+7(345-41) 3-26-00").sidebar__phone-val +7(345-41) 3-26-00
+                    a(href="#modal-recall", data-uk-modal).border-dashed Оставить заявку

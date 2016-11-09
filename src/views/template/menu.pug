@@ -1,0 +1,8 @@
+- var aboutMenu = ['<i class="icon sprite-i-about-1"></i> <span>История</span>','<i class="icon sprite-i-about-2"></i> <span>Лаборатория</span>', '<i class="icon sprite-i-about-3"></i> <span>Фотогалерея</span>', '<i class="icon sprite-i-about-4"></i> <span>Видео</span>']
+- var mainMenu = ['Главная','О компании', 'Продукция', 'Новости', 'Контакты']
+- var products = ['Семенной картофель','Зерновые культуры', 'Продовольственный картофель', 'Свежие овощи', 'Зерно']
+mixin menu(arr)
+    ul&attributes(attributes)
+        each val, index in arr
+            li(class!=attributes.class +'__item')
+                a(class!=attributes.class + '__link', href='#anchor-' + index)!= val

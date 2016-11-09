@@ -1,0 +1,6 @@
+mixin page-title(h1, ...items)
+    .page-title
+        .container-content
+            h1.page-title__h1= h1
+            include ../template/breadcrumbs.pug
+            +breadcrumbs(h1, ...items)

@@ -1,0 +1,101 @@
+//- Модалка для продукта
+#modal-category-item.uk-modal.modal
+    .uk-modal-dialog
+        a.uk-modal-close.uk-close
+        .modal__title Розалинд
+        .content
+            .clearfix.uk-margin
+                .category-item__img
+                    img(src="../img/img-category.jpg")
+                .category-item__caption
+                    .category-item__caption.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            .category-item-char.uk-margin
+                h3.category-item-char__title ХАРАКТЕРИСТИКИ
+                table.category-item-char__table
+                    col(width="220")
+                    tr
+                        th
+                            b Период созревания:
+                        td ранний
+                    tr
+                        th
+                            b Тип картофеля:
+                        td столовый
+                    tr
+                        th
+                            b Цвет кожуры:
+                        td желтый
+                    tr
+                        th
+                            b Цвет мякоти:
+                        td желтый
+                    tr
+                        th
+                            b Вегетационный период:
+                        td 60-70 дней
+                    tr
+                        th
+                            b Тип картофеля:
+                        td столовый
+                    tr
+                        th
+                            b Урожайность:
+                        td 36 т/га
+                    tr
+                        th
+                            b Масса клубня:
+                        td 88-150 грамм
+                    tr
+                        th
+                            b Форма клубня:
+                        td удлиненно-овальная
+                    tr
+                        th
+                            b Устойчивость:
+                        td рак картофеля
+                    tr
+                        th
+                            b Лежкость:
+                        td 90%
+                    tr
+                        th
+                            b Районирование:
+                        td Сорт включен в Госреестр РФ по Йентральному, Северо-Западному, Волго-Вятскому и Нижневолжскому регионам
+
+//- Оставить заявку
+#modal-recall.uk-modal.modal
+    .uk-modal-dialog.modal-bg.modal-width-small
+        a.uk-modal-close.uk-close
+        .title.title_line-s.uk-text-center Оставить заявку
+        .form.uk-form.uk-form-stacked
+            form(id="", method="", action="")
+                .uk-form-row
+                    .form__field
+                        label.form__label Вас зовут:
+                        .uk-form-controls
+                            input(type="text" name="" placeholder="Введите имя" equired).uk-width-1-1
+                .uk-form-row
+                    .form__field
+                        label.form__label Контактный телефон
+                        .uk-form-controls
+                            input(type="tel" name="" placeholder="Введите номер телефона" required).uk-width-1-1
+                .uk-form-row
+                    .form__field
+                        label.form__label Информация о заказе
+                        .uk-form-controls
+                            textarea(type="text" name="" placeholder="Введите комментарий к заказу" required).uk-width-1-1
+                .uk-form-row
+                    .uk-flex.uk-flex-wrap.uk-flex-space-between.uk-flex-middle
+                        .uk-form-file.uk-text-success
+                            | Прикрепить файл
+                            input(type="file")
+                        button(type="submit").btn.uk-button.uk-button-warning Отправить
+
+//- Спасибо
+#modal-recall.uk-modal.modal
+    .uk-modal-dialog.modal-bg.modal-width-small
+        a.uk-modal-close.uk-close
+        .title.title_line-s.uk-text-center Оставить заявку
+        p.uk-text-center.
+            Ваше сообщение успешно отправлено! Наши специалисты свяжутся с Вами в ближайшее время. Спасибо, что выбрали агрофирму "КРиММ"

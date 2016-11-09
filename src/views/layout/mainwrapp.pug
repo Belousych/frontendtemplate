@@ -1,0 +1,13 @@
+//- index.pug
+extends h1.pug
+block content
+    .mainWrapper
+        block bg
+        block header
+            include ../template/header.pug
+            +header()
+        block pagetitle
+        block content
+        block footWrap
+            .footWrap
+    block secondScreen
